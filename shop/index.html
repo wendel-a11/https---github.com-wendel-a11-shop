@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ShopFlex - sistema de gerenciamento de loja virtual">
+  <title>ShopFlex | Painel administrativo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><span class="brand-mark">S</span><span>ShopFlex</span></div>
+      <p class="menu-caption">MENU PRINCIPAL</p>
+      <nav class="navigation" aria-label="Menu principal">
+        <button class="nav-link active" data-page="dashboard"><span>▦</span> Visão geral</button>
+        <button class="nav-link" data-page="clientes"><span>♙</span> Clientes</button>
+        <button class="nav-link" data-page="produtos"><span>▣</span> Produtos</button>
+        <button class="nav-link" data-page="categorias"><span>▤</span> Categorias</button>
+        <button class="nav-link" data-page="funcionarios"><span>♧</span> Funcionários</button>
+        <button class="nav-link" data-page="pedidos"><span>▱</span> Pedidos</button>
+        <button class="nav-link" data-page="itens"><span>☷</span> Itens do pedido</button>
+        <button class="nav-link" data-page="pagamentos"><span>＄</span> Pagamentos</button>
+        <button class="nav-link" data-page="entregas"><span>➤</span> Entregas</button>
+      </nav>
+      <div class="sidebar-bottom"><span class="status-dot"></span> Sistema operacional <small>Versão 1.0</small></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Abrir menu">☰</button>
+        <div><p class="eyebrow">PAINEL ADMINISTRATIVO</p><h1 id="pageTitle">Visão geral</h1></div>
+        <div class="top-actions"><span class="admin-label">Administrador</span><button class="theme-button" id="themeToggle" title="Alternar tema" aria-label="Alternar tema">☾</button></div>
+      </header>
+
+      <section id="dashboardPage" class="page-section">
+        <div class="welcome-row"><div><h2>Bem-vindo ao ShopFlex!</h2><p>Acompanhe as principais informações da sua loja.</p></div><span class="date-chip" id="todayDate"></span></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-icon purple">▣</div><p>Produtos cadastrados</p><strong id="totalProdutos">0</strong><small>Itens no catálogo</small></article>
+          <article class="stat-card"><div class="stat-icon blue">♙</div><p>Clientes cadastrados</p><strong id="totalClientes">0</strong><small>Base de clientes</small></article>
+          <article class="stat-card"><div class="stat-icon orange">▱</div><p>Pedidos registrados</p><strong id="totalPedidos">0</strong><small>Pedidos da loja</small></article>
+          <article class="stat-card"><div class="stat-icon green">＄</div><p>Valor dos pedidos</p><strong id="totalVendas">R$ 0,00</strong><small>Soma dos pedidos cadastrados</small></article>
+        </div>
+        <div class="dashboard-grid">
+          <article class="panel"><div class="panel-heading"><div><h3>Atalhos rápidos</h3><p>Acesse os principais cadastros.</p></div></div><div class="quick-actions"><button data-go="produtos">＋ Cadastrar produto</button><button data-go="clientes">＋ Cadastrar cliente</button><button data-go="pedidos">＋ Registrar pedido</button></div></article>
+          <article class="panel"><div class="panel-heading"><div><h3>Como começar</h3><p>Organize sua loja em poucos passos.</p></div></div><ol class="steps"><li>Cadastre as categorias da loja.</li><li>Adicione os produtos e seus preços.</li><li>Cadastre os clientes.</li><li>Registre pedidos, pagamentos e entregas.</li></ol></article>
+        </div>
+        <article class="panel recent-panel"><div class="panel-heading"><div><h3>Últimos pedidos</h3><p>Registros mais recentes da loja.</p></div><button class="text-button" data-go="pedidos">Ver todos →</button></div><div id="recentOrders" class="recent-list"><p class="empty-state">Nenhum pedido cadastrado até o momento.</p></div></article>
+      </section>
+
+      <section id="managementPage" class="page-section hidden">
+        <div class="management-intro"><div><h2 id="sectionHeading">Clientes</h2><p id="sectionDescription">Gerencie os registros da sua loja.</p></div><button class="primary-button" id="addRecord">＋ Novo cadastro</button></div>
+        <div class="panel table-panel"><div class="table-toolbar"><div class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Pesquisar registros..."></div><span class="record-count" id="recordCount">0 registros</span></div><div class="table-wrap"><table><thead id="tableHead"></thead><tbody id="tableBody"></tbody></table></div><div id="emptyState" class="empty-state hidden">Nenhum registro encontrado. Clique em “Novo cadastro” para começar.</div></div>
+      </section>
+      <footer class="footer">ShopFlex © <span id="year"></span> · Projeto acadêmico de Desenvolvimento de Sistemas</footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="recordModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card"><div class="modal-header"><div><p class="eyebrow">GERENCIAMENTO DE DADOS</p><h2 id="modalTitle">Novo cadastro</h2></div><button class="close-button" id="closeModal" aria-label="Fechar">×</button></div><form id="recordForm"><div class="form-grid" id="formFields"></div><div class="form-actions"><button type="button" class="secondary-button" id="cancelModal">Cancelar</button><button type="submit" class="primary-button">Salvar cadastro</button></div></form></div>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="js/dados.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
